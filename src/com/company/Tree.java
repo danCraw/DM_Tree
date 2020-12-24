@@ -17,18 +17,14 @@ public class Tree {
         this.value = value;
     }
 
-    public static void sumDeep(Tree root) {
+    public static void deep(Tree root) {
         Stack<Tree> stack = new Stack<>();
         stack.push(root);
-
-        int sum = 0;
 
         while (!stack.isEmpty()) {
             Tree node = stack.pop();
 
             System.out.println(node.value);
-
-            sum = sum + node.value;
 
             if (node.right != null) {
                 stack.push(node.right);
@@ -40,24 +36,21 @@ public class Tree {
         }
     }
 
-    public static void sumWide(Tree root) {
-        Queue<Tree> stack = new ArrayDeque<>();
-        stack.add(root);
-        int sum = 0;
+    public static void wide(Tree root) {
+        Queue<Tree> queue = new ArrayDeque<>();
+        queue.add(root);
 
-        while (!stack.isEmpty()) {
-            Tree node = stack.remove();
+        while (!queue.isEmpty()) {
+            Tree node = queue.remove();
 
             System.out.println(node.value);
 
-            sum = sum + node.value;
-
             if (node.left != null) {
-                stack.add(node.left);
+                queue.add(node.left);
             }
 
             if (node.right != null) {
-                stack.add(node.right);
+                queue.add(node.right);
             }
         }
     }
